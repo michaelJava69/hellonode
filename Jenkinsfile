@@ -34,10 +34,10 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         withDockerRegistry([credentialsId: 'docker-hub-credentials', url: "https://registry.hub.docker.com",
          usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']) {  
-         usr = USERNAME
-			pswd = PASSWORD   
+          docker.withRegistry('', 'docker-hub-credentials') {
+		  sh "docker login -u ${USERNAME} -p ${PASSWORD}"    }
         /* sh 'docker login -u "$USERNAME" -p "$PASSWORD"' */    
-        sh "docker login -u ${usr} -p ${pswd}"
+         
         /*docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {  */
            /* app.push("${env.BUILD_NUMBER}")   */
            /* sh 'docker login -u "ugbechie" -p " " '  */
