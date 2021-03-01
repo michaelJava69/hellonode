@@ -39,11 +39,19 @@ node {
          sh 'docker login -u "$USERNAME" -p "$PASSWORD"' */    
          
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {  
-           /* app.push("${env.BUILD_NUMBER}")   */
-           /* sh 'docker login -u "ugbechie" -p " " '  */
+            app.push("${env.BUILD_NUMBER}")   
+            /* sh 'docker login -u "ugbechie" -p " " '  */
             
-            app.push("1")
+           /* app.push("1")  */
             app.push("latest")
         }
     }
+    /*	
+    stage('Remove Unused docker image') {
+      steps{
+         sh "docker rmi $imagename:$BUILD_NUMBER"
+         sh "docker rmi $imagename:latest"
+       }
+    }
+    */
 }
