@@ -1,6 +1,10 @@
 node {
     def app
-
+    
+    environment {
+       USER = "michael"
+    }
+    
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
