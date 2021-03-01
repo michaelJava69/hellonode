@@ -32,12 +32,13 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        withDockerRegistry([credentialsId: 'docker-hub-credentials', url: "https://registry.hub.docker.com"]) {
-        /* usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']) {   
-        sh 'docker login -u "$USERNAME" -p "$PASSWORD"'    */
+        withDockerRegistry([credentialsId: 'docker-hub-credentials', url: "https://registry.hub.docker.com",
+         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']) {   
+        sh 'docker login -u "$USERNAME" -p "$PASSWORD"'    
         /*docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {  */
            /* app.push("${env.BUILD_NUMBER}")   */
-            sh 'docker login -u "ugbechie" -p "Azuk@123" '
+           /* sh 'docker login -u "ugbechie" -p " " '  */
+            
             app.push("1")
             app.push("latest")
         }
