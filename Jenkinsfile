@@ -37,6 +37,7 @@ node {
         sh 'docker login -u "$USERNAME" -p "$PASSWORD"'    */
         /*docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {  */
            /* app.push("${env.BUILD_NUMBER}")   */
+            sh 'docker login'
             app.push("1")
             app.push("latest")
         }
